@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace BuildingBlocks.EFCore;
-public abstract class AppDbContextBase : DbContext,IDbContext
+public abstract class AppDbContextBase : DbContext, IDbContext
 {
- public AppDbContextBase(DbContextOptions options) : base(options)
- {}
+    public AppDbContextBase(DbContextOptions options) : base(options)
+    { }
 }
