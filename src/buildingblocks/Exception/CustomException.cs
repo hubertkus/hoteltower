@@ -1,0 +1,16 @@
+
+using System.Net;
+
+namespace BuildingBlocks.Exception;
+
+public class CustomException : System.Exception
+{
+    public HttpStatusCode StatusCode { get; }
+    public int? Code { get; }
+
+    public CustomException(string message, HttpStatusCode statusCode = HttpStatusCode.BadRequest, int? code = null) : base(message)
+    {
+        StatusCode = statusCode;
+        Code = code;
+    }
+}

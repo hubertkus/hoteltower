@@ -1,3 +1,4 @@
+using User.Exceptions;
 
 namespace User.ValueObjects;
 
@@ -12,7 +13,9 @@ public record Name
     public static Name Of(string value)
     {
         if (string.IsNullOrWhiteSpace(value))
-        { }
+        {
+            throw new InvalidNameException(value);
+        }
         return new Name(value);
     }
 }

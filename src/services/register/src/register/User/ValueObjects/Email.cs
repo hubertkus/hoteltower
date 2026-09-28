@@ -1,3 +1,4 @@
+using User.Exceptions;
 
 namespace User.ValueObjects;
 
@@ -12,7 +13,9 @@ public record Email
     public static Email Of(string value)
     {
         if (string.IsNullOrWhiteSpace(value))
-        { }
+        {
+            throw new InvalidEmailException(value);
+        }
         return new Email(value);
     }
 }
