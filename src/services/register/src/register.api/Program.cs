@@ -1,5 +1,7 @@
+using Register;
 using Register.Data;
 using Microsoft.EntityFrameworkCore;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<RegisterDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddValidatorsFromAssemblyContaining<ApplicationAssemblyMarker>();
 
 var app = builder.Build();
 
