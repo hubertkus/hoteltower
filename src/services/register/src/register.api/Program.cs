@@ -2,6 +2,7 @@ using Register;
 using Register.Data;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation;
+using Mapster;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<RegisterDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddValidatorsFromAssemblyContaining<ApplicationAssemblyMarker>();
+builder.Services.AddMapster();
 
 var app = builder.Build();
 
