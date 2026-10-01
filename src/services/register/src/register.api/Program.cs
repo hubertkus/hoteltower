@@ -1,5 +1,6 @@
 using Register;
 using Register.Data;
+using User.Models;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation;
 using Mapster;
@@ -15,6 +16,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<ApplicationAssemblyMarker>(
 builder.Services.AddMapster();
 builder.Services.AddMediatR(cfg=>
 cfg.RegisterServicesFromAssembly(typeof(ApplicationAssemblyMarker).Assembly));
+builder.Services.AddTransient<IUserRepository,EFUserRepository>();
 
 var app = builder.Build();
 
