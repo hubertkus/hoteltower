@@ -1,4 +1,6 @@
 namespace User.RegisterUser;
 
-public record CreateUserResult(string Name, string Email)
-{ }
+public record RegisterUserResult
+{
+    public Guid Id { get; set; }
+}
