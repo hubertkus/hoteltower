@@ -3,7 +3,13 @@ namespace User.Models;
 
 public class User
 {
-    public required Name Name { get; set; }
-    public required Email Email { get; init; }
+    public Name Name { get; private set; }
+    public Email Email { get; private set; }
     public Guid Id { get; init; }
+
+    public User(Name name, Email email)
+    {
+        Name = name;
+        Email = email;
+    }
 }

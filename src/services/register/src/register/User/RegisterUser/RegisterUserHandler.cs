@@ -3,6 +3,7 @@ using Mapster;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using User.Models;
+using User.ValueObjects;
 
 namespace User.RegisterUser;
 
@@ -15,11 +16,14 @@ public class RegisterUserHandler : IRequestHandler<RegisterUserCommand, Register
     }
     public async Task<RegisterUserResult> Handle(RegisterUserCommand command, CancellationToken cancellationToken)
     {
-        var entity = await _userRepository.Users.FirstOrDefaultAsync(u => u.Email == command.Email, cancellationToken);
+        var name = Name.Of(command.Name);
+        var email = Email.Of(command.Email);
+
+        var entity = await _userRepository.Users.FirstOrDefaultAsync(u => u.Email == email, cancellationToken);
 
         if (entity == null)
         {
-            var user = command.Adapt<User.Models.User>();
+            var user = new User.Models.User(name, email);
             entity = await _userRepository.AddUser(user);
         }
         return new RegisterUserResult() { Id = entity.Id };
