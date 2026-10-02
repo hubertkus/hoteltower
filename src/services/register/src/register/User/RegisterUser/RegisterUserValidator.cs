@@ -1,5 +1,6 @@
 
 using FluentValidation;
+using User.RegisterUser.Commands;
 
 namespace User.RegisterUser;
 

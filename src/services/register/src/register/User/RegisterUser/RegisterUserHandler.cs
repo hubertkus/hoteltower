@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using User.Models;
 using User.ValueObjects;
+using User.RegisterUser.Commands;
 
 namespace User.RegisterUser;
 
