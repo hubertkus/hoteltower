@@ -1,4 +1,3 @@
-
 using System.Net;
 
 namespace BuildingBlocks.Exception;
@@ -13,4 +12,6 @@ public class CustomException : System.Exception
         StatusCode = statusCode;
         Code = code;
     }
+    public CustomException(string message, System.Exception exception) : base(message,exception)
+    { }
 }
