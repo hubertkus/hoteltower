@@ -7,29 +7,27 @@ namespace User.Models;
 
 public class EFUserRepository : IUserRepository
 {
-    private readonly RegisterDbContext _context;
+    private readonly RegisterDbContext context;
 
-    public EFUserRepository(RegisterDbContext context)
+    public EFUserRepository(RegisterDbContext _context)
     {
-        _context = context;
+        context = _context;
     }
-    public IQueryable<User> Users => _context.Users;
-
+    public async Task<User?> GetByEmailAsync(Email Email, CancellationToken cancellationToken)
+    {
+        return await context.Users.FirstOrDefaultAsync(u => u.Email == Email,cancellationToken);
+    }
     public async Task<User> AddUser(User User)
     {
-        var user = Users.FirstOrDefault(u => u.Email == User.Email);
         try
         {
-            if (user == null)
-            {
-                user = (await _context.AddAsync(User)).Entity;
-            }
-            await _context.SaveChangesAsync();
+            await context.AddAsync(User);
+            await context.SaveChangesAsync();
         }
         catch (RegisterUserFaultException ex)
         {
             throw new RegisterUserFaultException(User.Name.Value, ex);
         }
-        return user;
+        return User;
     }
 }

@@ -1,8 +1,9 @@
+using User.ValueObjects;
 
 namespace User.Models;
 
 public interface IUserRepository
 {
-    IQueryable<User> Users { get; }
+    Task<User?> GetByEmailAsync(Email email, CancellationToken cancellationToken);
     Task<User> AddUser(User user);
 }

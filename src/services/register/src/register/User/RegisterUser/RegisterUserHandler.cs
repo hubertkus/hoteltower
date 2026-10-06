@@ -20,7 +20,7 @@ public class RegisterUserHandler : IRequestHandler<RegisterUserCommand, Register
         var name = Name.Of(command.Name);
         var email = Email.Of(command.Email);
 
-        var entity = await _userRepository.Users.FirstOrDefaultAsync(u => u.Email == email, cancellationToken);
+        var entity = await _userRepository.GetByEmailAsync(email, cancellationToken);
 
         if (entity == null)
         {
