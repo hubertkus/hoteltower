@@ -15,7 +15,7 @@ public class EFUserRepository : IUserRepository
     }
     public async Task<User?> GetByEmailAsync(Email Email, CancellationToken cancellationToken)
     {
-        return await context.Users.FirstOrDefaultAsync(u => u.Email == Email,cancellationToken);
+        return await context.Users.FirstOrDefaultAsync(u => u.Email == Email, cancellationToken);
     }
     public async Task<User> AddUser(User User)
     {
@@ -24,7 +24,7 @@ public class EFUserRepository : IUserRepository
             await context.AddAsync(User);
             await context.SaveChangesAsync();
         }
-        catch (RegisterUserFaultException ex)
+        catch (DbUpdateException ex)
         {
             throw new RegisterUserFaultException(User.Name.Value, ex);
         }
