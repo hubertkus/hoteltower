@@ -10,20 +10,20 @@ namespace Register.Controllers;
 [Route("register/user")]
 public class RegisterUsersController : ControllerBase
 {
- private readonly IMediator mediator;
+    private readonly IMediator mediator;
 
- public RegisterUsersController(IMediator _mediator)
- {
-  mediator = _mediator;
- }
+    public RegisterUsersController(IMediator _mediator)
+    {
+        mediator = _mediator;
+    }
 
- [HttpPost]
- public async Task<IActionResult> RegisterUsers(RegisterUserRequest request)
- {
-  var command = request.Adapt<RegisterUserCommand>();
+    [HttpPost]
+    public async Task<IActionResult> RegisterUsers(RegisterUserRequest request)
+    {
+        var command = request.Adapt<RegisterUserCommand>();
 
-  var result = mediator.Send(command);
+        var result = mediator.Send(command);
 
-  return Ok(result);
- }
+        return Ok(result);
+    }
 }

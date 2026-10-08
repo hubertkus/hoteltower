@@ -15,11 +15,11 @@ builder.Services.AddDbContext<RegisterDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddValidatorsFromAssemblyContaining<ApplicationAssemblyMarker>();
 builder.Services.AddMapster();
-builder.Services.AddMediatR(cfg=>
+builder.Services.AddMediatR(cfg =>
 cfg.RegisterServicesFromAssembly(typeof(ApplicationAssemblyMarker).Assembly));
-builder.Services.AddTransient<IUserRepository,EFUserRepository>();
-builder.Services.AddHttpClient("Register", c=>
-c.BaseAddress=new Uri("https://localhost:7110"));
+builder.Services.AddTransient<IUserRepository, EFUserRepository>();
+builder.Services.AddHttpClient("Register", c =>
+c.BaseAddress = new Uri("https://localhost:7110"));
 
 var app = builder.Build();
 
