@@ -11,6 +11,12 @@ public class RegisterUserController : Controller
         httpClient = _httpClient;
     }
 
+    [HttpGet]
+    public IActionResult Create()
+    {
+        return View();
+    }
+
     [HttpPost]
     public async Task<IActionResult> Create(RegisterUserViewModel model)
     {

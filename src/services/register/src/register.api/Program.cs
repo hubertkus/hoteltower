@@ -4,6 +4,8 @@ using User.Models;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation;
 using Mapster;
+using User.ValueObjects;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,5 +42,8 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers();
+app.MapControllerRoute(
+ name: "default",
+ pattern: "{controller=RegisterUser}/{action=Create}");
 
 app.Run();
