@@ -28,6 +28,6 @@ public class RegisterUserController : Controller
         if (!response.IsSuccessStatusCode)
             return View(model);
 
-        return RedirectToAction("Index");
+        return Content("<h2 style='color: green;'>Zarejestrowano pomyślnie</h2>","text/html");
     }
 }
