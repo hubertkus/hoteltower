@@ -40,7 +40,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapRazorPages();
+// app.MapRazorPages();
 app.MapControllers();
 app.MapControllerRoute(
  name: "default",
