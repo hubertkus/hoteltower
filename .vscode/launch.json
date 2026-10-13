@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+    "compounds": [
+    {
+      "name": "All Services",
+      "configurations": [
+        "Register"
+      ]
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Register",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/services/Register/src/Register.Api/bin/Debug/net8.0/Register.Api.dll",
+      "cwd": "${workspaceFolder}/src/services/Register/src/Register.Api",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "https://localhost:7110"
+      }
+    },
+  ]
+}
