@@ -22,7 +22,7 @@ public class RegisterUsersController : ControllerBase
     {
         var command = request.Adapt<RegisterUserCommand>();
 
-        var result = mediator.Send(command);
+        var result = await mediator.Send(command);
 
         return Ok(result);
     }
