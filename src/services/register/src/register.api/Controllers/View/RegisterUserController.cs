@@ -6,9 +6,9 @@ namespace Register.Controllers;
 public class RegisterUserController : Controller
 {
     private readonly HttpClient httpClient;
-    public RegisterUserController(HttpClient _httpClient)
+    public RegisterUserController(IHttpClientFactory httpClientFactory)
     {
-        httpClient = _httpClient;
+        httpClient = httpClientFactory.CreateClient("Register");
     }
 
     [HttpGet]
