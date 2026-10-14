@@ -44,6 +44,6 @@ app.UseAuthorization();
 app.MapControllers();
 app.MapControllerRoute(
  name: "default",
- pattern: "{controller=RegisterUser}/{action=Create}");
+ pattern: "{controller=RegisterUser}/{action=Index}");
 
 app.Run();

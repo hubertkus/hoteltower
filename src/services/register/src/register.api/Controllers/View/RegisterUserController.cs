@@ -12,13 +12,13 @@ public class RegisterUserController : Controller
     }
 
     [HttpGet]
-    public IActionResult Create()
+    public IActionResult Index()
     {
         return View();
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(RegisterUserViewModel model)
+    public async Task<IActionResult> Index(RegisterUserViewModel model)
     {
         if (!ModelState.IsValid)
             return View(model);
