@@ -14,4 +14,7 @@ public class CustomException : System.Exception
     }
     public CustomException(string message, System.Exception exception) : base(message,exception)
     { }
+    public CustomException(string message) : base(message)
+    { }
+
 }
