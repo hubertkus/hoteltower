@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/_content/Shared.UI/css/site.css"/>
+    <title>Wczytaj dane</title>
+</head>
+
+<body>
+
+    <div>
+        <h2>Wczytanie do bazy nazw dostępnych pokoi</h2>
+    </div>
+
+    <div class="container">
+
+        <form asp-controller="Admin" asp-action="SeedRooms" method="post">
+
+            <button type="submit" class="button">
+                Wczytaj
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
