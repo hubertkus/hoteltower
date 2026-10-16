@@ -1,23 +1,22 @@
 using Book.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Room.Models;
 
 public static class SeedData
 {
-    public static async void EnsurePopulated(IServiceProvider serviceProvider, IRoomRepository roomRepository)
+    public static async Task<bool> EnsurePopulated(IRoomRepository roomRepository,BookDbContext bookDbContext)
     {
-        BookDbContext bookDbContext = serviceProvider.GetRequiredService<BookDbContext>();
+        await bookDbContext.Database.MigrateAsync();
 
-        bookDbContext.Database.Migrate();
-        if (!bookDbContext.Rooms.Any())
-        {
-            foreach (var room in roomRepository.GetRooms())
-            {
-                bookDbContext.AddRange(room);
-            }
-        }
+        if (await bookDbContext.Rooms.AnyAsync())
+           return false;
+
+        var rooms=roomRepository.GetRooms();
+        
+        await bookDbContext.AddRangeAsync(rooms);
         await bookDbContext.SaveChangesAsync();
+
+        return true;
     }
 }
