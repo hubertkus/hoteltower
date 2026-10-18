@@ -3,6 +3,7 @@ using Room.Models;
 using Book.Data;
 namespace Book.Controllers;
 
+[Route("admin")]
 public class AdminController : Controller
 {
     private readonly IRoomsSeeder roomsSeeder;
