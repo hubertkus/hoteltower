@@ -17,9 +17,15 @@ public class EFRoomsSeederTest
 
         var options = new DbContextOptionsBuilder<BookDbContext>().UseSqlite(connection).Options;
 
-        var context = new BookDbContext(options);
+        using var context = new BookDbContext(options);
 
         var roomRepository = new Mock<IRoomRepository>();
+
+        roomRepository.Setup(r => r.GetRooms()).Returns(new List<Room.Models.Room>()
+        {
+         new Room.Models.Room("1","Pokój 1 osobowy"),
+         new Room.Models.Room("2","Pokój 2 osobowy")
+        });
 
         await context.Database.EnsureCreatedAsync();
 
@@ -32,5 +38,6 @@ public class EFRoomsSeederTest
         //Assert
         Assert.True(resultFirst);
         Assert.False(resultSecond);
+        Assert.Equal(2, context.Rooms.Count());
     }
 }
