@@ -16,8 +16,6 @@ public class RoomsSeeder : IRoomsSeeder
 
     public async Task<bool> EnsurePopulated()
     {
-        await bookDbContext.Database.MigrateAsync();
-
         if (await bookDbContext.Rooms.AnyAsync())
             return false;
 
