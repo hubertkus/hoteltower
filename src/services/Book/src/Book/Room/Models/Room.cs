@@ -6,7 +6,7 @@ public class Room
     public Guid Id { get; init; } = Guid.NewGuid();
     public string ShortName { get; private set; } = string.Empty;
     public string Name { get; private set; } = string.Empty;
-    public bool Reserved { get; private set; }
+    public bool Busy { get; private set; } = false;
     private Room()
     { }
     public Room(string shortName, string name)
@@ -20,16 +20,16 @@ public class Room
         ShortName = shortName;
         Name = name;
     }
-    public void Reserve()
+    public void Occupy()
     {
-        if (Reserved)
-            throw new InvalidReserveException("Reservation already exists.");
-        Reserved = true;
+        if (Busy)
+            throw new InvalidReserveException("Room is busy.");
+        Busy = true;
     }
-    public void CancelReservation()
+    public void CancelOccupation()
     {
-        if (!Reserved)
-            throw new InvalidReserveException("Reservation is possible.");
-        Reserved = false;
+        if (!Busy)
+            throw new InvalidReserveException("Room is not busy.");
+        Busy = false;
     }
 }
