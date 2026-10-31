@@ -12,7 +12,7 @@ public class CustomException : System.Exception
         StatusCode = statusCode;
         Code = code;
     }
-    public CustomException(string message, System.Exception exception) : base(message,exception)
+    public CustomException(string message, System.Exception exception) : base(message, exception)
     { }
     public CustomException(string message) : base(message)
     { }
