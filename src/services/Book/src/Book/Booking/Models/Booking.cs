@@ -1,7 +1,7 @@
 using Bookings.Exceptions;
 using BuildingBlocks.EFCore.Auditing;
 
-namespace Bookings.Models;
+namespace Booking.Models;
 
 public class Booking : IAuditable
 {

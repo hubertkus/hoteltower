@@ -1,7 +1,7 @@
 using BuildingBlocks.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Room.Models;
-using Bookings.Models;
+using Booking.Models;
 
 namespace Book.Data;
 
@@ -11,5 +11,5 @@ public sealed class BookDbContext : AppDbContextBase
     { }
 
     public DbSet<Room.Models.Room> Rooms => Set<Room.Models.Room>();
-    public DbSet<Bookings.Models.Booking> Bookings => Set<Bookings.Models.Booking>();
+    public DbSet<Booking.Models.Booking> Bookings => Set<Booking.Models.Booking>();
 }

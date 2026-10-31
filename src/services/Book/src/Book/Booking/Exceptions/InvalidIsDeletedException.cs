@@ -1,6 +1,6 @@
 using BuildingBlocks.Exception;
 
-namespace Bookings.Exceptions;
+namespace Booking.Exceptions;
 
 public class InvalidIsDeletedException : CustomException
 {
