@@ -9,14 +9,20 @@ public class Booking : IAuditable
     public bool IsDeleted { get; private set; } = false;
     public Guid UserId { get; private set; }
     public Guid RoomId { get; private set; }
+    public DateOnly From { get; private set; }
+    public DateOnly To { get; private set; }
+    public int Days { get; private set; }
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
     private Booking()
     { }
-    public Booking(Guid userId, Guid roomId)
+    public Booking(Guid userId, Guid roomId, DateOnly from, DateOnly to)
     {
         UserId = userId;
         RoomId = roomId;
+        From = from;
+        To = to;
+        Days = to.DayNumber - from.DayNumber;
     }
     public void Deleted()
     {
