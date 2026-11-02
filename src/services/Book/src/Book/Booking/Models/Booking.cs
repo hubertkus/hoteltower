@@ -1,4 +1,4 @@
-using Bookings.Exceptions;
+using Booking.Exceptions;
 using BuildingBlocks.EFCore.Auditing;
 
 namespace Booking.Models;
