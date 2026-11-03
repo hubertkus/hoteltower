@@ -12,7 +12,7 @@ public class EFBookingRepository : IBookingRepository
     {
         context = _context;
     }
-    public async Task<Booking?> GetByBookingAsync(Guid RoomId,DateOnly From,DateOnly To, CancellationToken cancellationToken)
+    public async Task<Booking?> GetByBookingAsync(Guid RoomId, DateOnly From, DateOnly To, CancellationToken cancellationToken)
     {
         return await context.Bookings.FirstOrDefaultAsync(b => b.RoomId == RoomId && (b.To <= From || b.From >= To), cancellationToken);
     }
