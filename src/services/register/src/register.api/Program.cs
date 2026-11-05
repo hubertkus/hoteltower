@@ -33,6 +33,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UsePathBase("/register");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

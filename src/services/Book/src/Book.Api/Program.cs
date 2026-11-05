@@ -30,6 +30,7 @@ await using (var scope = app.Services.CreateAsyncScope())
     await dbContext.Database.MigrateAsync();
 }
 
+app.UsePathBase("/book");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
