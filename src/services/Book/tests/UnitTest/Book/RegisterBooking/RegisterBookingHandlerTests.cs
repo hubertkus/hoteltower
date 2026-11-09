@@ -8,20 +8,14 @@ namespace UnitTest.Book.RegisterBooking;
 public class RegisterBookingHandlerTests
 {
     [Fact]
-    public async Task Handle_should_call_AddBook_when_book_does_not_exist()
+    public async Task RegisterBookingHandler_ShouldCallAddBook_WhenBookDoesNotExist()
     {
         //Arrange
-        var booking = new global::Booking.Models.Booking(
-         Guid.NewGuid(),
-         Guid.NewGuid(),
-         DateOnly.FromDateTime(DateTime.Now),
-         DateOnly.FromDateTime(DateTime.Now.AddDays(1)));
-
         var repositoryMoq = new Mock<IBookingRepository>();
 
         repositoryMoq
-            .Setup(x => x.AddBook(It.IsAny<global::Booking.Models.Booking>()))
-            .ReturnsAsync(booking);
+            .Setup(x => x.GetByBookingAsync(It.IsAny<Guid>(), It.IsAny<DateOnly>(), It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(false);   
 
         var handler = new RegisterBookingHandler(repositoryMoq.Object);
 
@@ -39,19 +33,13 @@ public class RegisterBookingHandlerTests
     }
 
     [Fact]
-    public async Task Handle_should_not_call_AddBook_when_book_exist()
+    public async Task RegisterBookingHandler_ShouldNotCallAddBook_WhenBookExist()
     {
         //Arrange
-        var booking = new global::Booking.Models.Booking(
-         Guid.NewGuid(),
-         Guid.NewGuid(),
-         DateOnly.FromDateTime(DateTime.Now),
-         DateOnly.FromDateTime(DateTime.Now.AddDays(1)));
-
         var repositoryMoq = new Mock<IBookingRepository>();
 
         repositoryMoq
-            .Setup(x => x.GetByBookingAsync(It.IsAny<Guid>(),It.IsAny<DateOnly>(),It.IsAny<DateOnly>(),It.IsAny<CancellationToken>())).ReturnsAsync(booking);
+            .Setup(x => x.GetByBookingAsync(It.IsAny<Guid>(),It.IsAny<DateOnly>(),It.IsAny<DateOnly>(),It.IsAny<CancellationToken>())).ReturnsAsync(true);
 
         var handler = new RegisterBookingHandler(repositoryMoq.Object);
 
