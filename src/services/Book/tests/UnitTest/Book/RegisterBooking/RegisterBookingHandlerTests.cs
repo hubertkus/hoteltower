@@ -15,7 +15,7 @@ public class RegisterBookingHandlerTests
 
         repositoryMoq
             .Setup(x => x.GetByBookingAsync(It.IsAny<Guid>(), It.IsAny<DateOnly>(), It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(false);   
+            .ReturnsAsync(false);
 
         var handler = new RegisterBookingHandler(repositoryMoq.Object);
 
@@ -27,7 +27,7 @@ public class RegisterBookingHandlerTests
 
         //Act
         await handler.Handle(command, CancellationToken.None);
-        
+
         //Assert
         repositoryMoq.Verify(x => x.AddBook(It.IsAny<global::Booking.Models.Booking>()), Times.Once);
     }
@@ -39,7 +39,7 @@ public class RegisterBookingHandlerTests
         var repositoryMoq = new Mock<IBookingRepository>();
 
         repositoryMoq
-            .Setup(x => x.GetByBookingAsync(It.IsAny<Guid>(),It.IsAny<DateOnly>(),It.IsAny<DateOnly>(),It.IsAny<CancellationToken>())).ReturnsAsync(true);
+            .Setup(x => x.GetByBookingAsync(It.IsAny<Guid>(), It.IsAny<DateOnly>(), It.IsAny<DateOnly>(), It.IsAny<CancellationToken>())).ReturnsAsync(true);
 
         var handler = new RegisterBookingHandler(repositoryMoq.Object);
 
