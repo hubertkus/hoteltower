@@ -67,7 +67,7 @@ public class EFBookingRepositoryTests
     }
 
     [Fact]
-    public async Task GetByBookingAsync_ShouldReturnFalse_when_BookingContainedTerm()
+    public async Task GetByBookingAsync_ShouldReturnFalse_when_ExistingBookingContainedTerm()
     {
         //Arange
         await using var connection = new SqliteConnection("DataSource=:memory:");
