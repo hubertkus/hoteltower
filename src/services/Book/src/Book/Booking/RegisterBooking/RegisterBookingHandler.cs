@@ -21,13 +21,13 @@ public class RegisterBookingHandler : IRequestHandler<RegisterBookingCommand, Re
         var from = command.From;
         var to = command.To;
 
-        var entity = await bookingRepository.GetByBookingAsync(roomId, from, to, cancellationToken);
+        var bookingExists = await bookingRepository.GetByBookingAsync(roomId, from, to, cancellationToken);
+        var booking = new Booking.Models.Booking(userId, roomId, from, to);
 
-        if (entity == null)
+        if (!bookingExists)
         {
-            var booking = new Booking.Models.Booking(userId, roomId, from, to);
-            entity = await bookingRepository.AddBook(booking);
+            await bookingRepository.AddBook(booking);
         }
-        return new RegisterBookingResult() { Id = entity.Id };
+        return new RegisterBookingResult() { Id = booking.Id };
     }
 }
