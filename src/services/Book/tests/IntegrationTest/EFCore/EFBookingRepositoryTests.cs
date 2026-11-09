@@ -13,7 +13,7 @@ namespace IntegrationTest.EFCore;
 public class EFBookingRepositoryTests
 {
     [Fact]
-    public async Task GetByBookingAsync_ShouldReturnTrue_when_BookingExist()
+    public async Task GetByBookingAsync_ShouldReturnFalse_when_BookingExist()
     {
         //Arange
         await using var connection = new SqliteConnection("DataSource=:memory:");
@@ -36,11 +36,11 @@ public class EFBookingRepositoryTests
         var result = await repository.GetByBookingAsync(booking.RoomId, booking.From, booking.To, CancellationToken.None);
 
         //Assert
-        Assert.True(result);
+        Assert.False(result);
     }
 
     [Fact]
-    public async Task GetByBookingAsync_ShouldReturnFalse_when_BookingNotExist()
+    public async Task GetByBookingAsync_ShouldReturnTrue_when_BookingNotExist()
     {
         //Arange
         await using var connection = new SqliteConnection("DataSource=:memory:");
@@ -63,11 +63,11 @@ public class EFBookingRepositoryTests
         var result = await repository.GetByBookingAsync(booking.RoomId, DateOnly.FromDateTime(new DateTime(2026, 11, 4)), DateOnly.FromDateTime(new DateTime(2026, 11, 6)), CancellationToken.None);
 
         //Assert
-        Assert.False(result);
+        Assert.True(result);
     }
 
     [Fact]
-    public async Task GetByBookingAsync_ShouldReturnTrue_when_BookingContainedTerm()
+    public async Task GetByBookingAsync_ShouldReturnFalse_when_BookingContainedTerm()
     {
         //Arange
         await using var connection = new SqliteConnection("DataSource=:memory:");
@@ -90,7 +90,7 @@ public class EFBookingRepositoryTests
         var result = await repository.GetByBookingAsync(booking.RoomId, DateOnly.FromDateTime(new DateTime(2026, 11, 2)), DateOnly.FromDateTime(new DateTime(2026, 11, 6)), CancellationToken.None);
 
         //Assert
-        Assert.True(result);
+        Assert.False(result);
     }
 
     [Fact]
