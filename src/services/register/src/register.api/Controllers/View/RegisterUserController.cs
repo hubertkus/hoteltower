@@ -28,6 +28,8 @@ public class RegisterUserController : Controller
         if (!response.IsSuccessStatusCode)
             return View(model);
 
-        return Content("<h2 style='color: green;'>Zarejestrowano pomyślnie</h2>","text/html; charset=utf-8");
+        ViewData["Message"] = "Zarejestrowano pomyślnie";
+
+        return View("Registered");
     }
 }
