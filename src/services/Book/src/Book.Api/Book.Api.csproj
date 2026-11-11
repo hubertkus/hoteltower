@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Book\Book.csproj" />       
+    <ProjectReference Include="..\..\..\Shared.UI\Shared.UI.csproj" />       
   </ItemGroup>
 
 
