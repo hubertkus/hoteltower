@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 namespace Booking.Models.ViewModels;
 
-public class RegisterBookongViewModel
+public class RegisterBookingViewModel
 {
     [Required(ErrorMessage = "Id użytkownika jest wymagany")]
     public Guid UserId { get; set; } = Guid.Empty;

@@ -18,7 +18,7 @@ public class RegisterBookingController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Index(RegisterBookongViewModel model)
+    public async Task<IActionResult> Index(RegisterBookingViewModel model)
     {
         if (!ModelState.IsValid)
             return View(model);
