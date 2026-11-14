@@ -1,5 +1,6 @@
 using User.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using User.RegisterUser.Dtos;
 
 namespace Register.Controllers;
 
@@ -30,6 +31,6 @@ public class RegisterUserController : Controller
 
         ViewData["Message"] = "Zarejestrowano pomyślnie";
 
-        return View("Registered");
+        return View("Registered",new RegisterUserResponse { Id = await response.Content.ReadFromJsonAsync<Guid>() });
     }
 }
