@@ -1,6 +1,8 @@
-@using User.RegisterUser.Dtos;
-@model RegisterUserResponse;
+@using User.RegisterUser.Dtos
+@model RegisterUserResponse
 
 <h1 style='color: green;'>
     @ViewData["Message"]
 </h1>
+
+<a href="https://localhost:7125/book/RegisterBooking/Index?userId=@Model.Id">Zarezerwuj pokój</a>
