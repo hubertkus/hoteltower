@@ -1,20 +1,35 @@
 using Booking.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using User.RegisterUser.Dtos;
+using Room.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Register.Controllers;
 
 public class RegisterBookingController : Controller
 {
     private readonly HttpClient httpClient;
-    public RegisterBookingController(IHttpClientFactory httpClientFactory)
+    private readonly IRoomRepository roomRepository;
+    public RegisterBookingController(IHttpClientFactory httpClientFactory, IRoomRepository roomRepositoryFactory)
     {
         httpClient = httpClientFactory.CreateClient("Booking");
+        roomRepository = roomRepositoryFactory;
     }
 
     [HttpGet]
-    public IActionResult Index()
+    public IActionResult Index(RegisterUserResponse model)
     {
-        return View();
+
+        var rooms = roomRepository.GetRooms();
+        return View(new RegisterBookingViewModel
+        {
+            UserId = model.Id,
+            Rooms = rooms.Select(r => new SelectListItem
+            {
+                Value = r.Id.ToString(),
+                Text = r.ShortName
+            })
+        });
     }
 
     [HttpPost]
