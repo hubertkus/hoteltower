@@ -1,0 +1,51 @@
+@using Booking.Models.ViewModels
+@model RegisterBookingViewModel
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/_content/Shared.UI/wwwroot/css/site.css" />
+    <title>Rezerwacja w hotelu Tower</title>
+</head>
+
+<body>
+    <div>
+        <h2>Witamy w Hotelu Tower</h2>
+    </div>
+
+    <div class="container">
+        <h1>Rezerwacja</h1>
+
+        <form asp-controller="RegisterBooking" asp-action="Index" method="post">
+            <input asp-for="UserId" type="hidden" />
+
+            <div class="form-group">
+                <label asp-for="RoomId">Nr. pokoju</label>
+                <select asp-for="RoomId">
+                    <option value="">Wybierz pokój</option>
+                    @foreach (var room in Model.Rooms)
+                    {
+                        <option value="@room.Value">@room.Text</option>
+                    }
+                </select>
+                <span asp-validation-for="RoomId" class="validation"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="From">Data rozpoczęcia</label>
+                <input asp-for="From" type="date" />
+                <span asp-validation-for="From" class="validation"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="To">Data zakończenia</label>
+                <input asp-for="To" type="date" />
+                <span asp-validation-for="To" class="validation"></span>
+            </div>
+
+            <button type="submit" class="button">Zarezerwuj</button>
+        </form>
+    </div>
+</body>
+</html>
