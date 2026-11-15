@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
+
 namespace Booking.Models.ViewModels;
 
 public class RegisterBookingViewModel
@@ -7,6 +9,9 @@ public class RegisterBookingViewModel
     public Guid UserId { get; set; } = Guid.Empty;
     [Required(ErrorMessage = "Id pokoju jest wymagane")]
     public Guid RoomId { get; set; } = Guid.Empty;
+    public IEnumerable<SelectListItem> Rooms { get; set; }
+        = new List<SelectListItem>();
+
     [Required(ErrorMessage = "Data rozpoczęcia jest wymagana")]
     public DateOnly From { get; set; } = DateOnly.MinValue;
     [Required(ErrorMessage = "Data zakończenia jest wymagana")]
