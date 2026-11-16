@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using FluentValidation;
 using Mapster;
+using Booking.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services.AddMapster();
 builder.Services.AddMediatR(cfg =>
 cfg.RegisterServicesFromAssembly(typeof(ApplicationAssemblyMarker).Assembly));
 builder.Services.AddTransient<IRoomRepository,RoomRepository>();
+builder.Services.AddScoped<IBookingRepository, EFBookingRepository>();
 builder.Services.AddHttpClient("Booking", c =>
 c.BaseAddress = new Uri("https://localhost:7125"));
 
