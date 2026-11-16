@@ -34,13 +34,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-await using (var scope = app.Services.CreateAsyncScope())
-{
-    var services = scope.ServiceProvider;
-    var dbContext = services.GetRequiredService<BookDbContext>();
-    await dbContext.Database.MigrateAsync();
-}
-
 app.UsePathBase("/book");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
