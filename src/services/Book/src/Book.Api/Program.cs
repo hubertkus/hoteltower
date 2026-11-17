@@ -46,4 +46,8 @@ app.UseAuthorization();
 // app.MapRazorPages();
 app.MapControllers();
 
+app.MapControllerRoute(
+ name: "default",
+ pattern: "{controller=RegisterBooking}/{action=Index}/{model?}");
+
 app.Run();
