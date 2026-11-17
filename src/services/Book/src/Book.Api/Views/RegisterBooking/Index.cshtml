@@ -5,7 +5,7 @@
 <html lang="pl">
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="~/_content/Shared.UI/wwwroot/css/site.css" />
+    <link rel="stylesheet" href="~/_content/Shared.UI/css/site.css" />
     <title>Rezerwacja w hotelu Tower</title>
 </head>
 
@@ -21,7 +21,7 @@
             <input asp-for="UserId" type="hidden" />
 
             <div class="form-group">
-                <label asp-for="RoomId">Nr. pokoju</label>
+                <label asp-for="RoomId" style="color: #1976d2;">Nr. pokoju</label>
                 <select asp-for="RoomId">
                     <option value="">Wybierz pokój</option>
                     @foreach (var room in Model.Rooms)
@@ -33,13 +33,13 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="From">Data rozpoczęcia</label>
+                <label asp-for="From" style="color: #1976d2;">Data rozpoczęcia</label>
                 <input asp-for="From" type="date" />
                 <span asp-validation-for="From" class="validation"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="To">Data zakończenia</label>
+                <label asp-for="To" style="color: #1976d2;">Data zakończenia</label>
                 <input asp-for="To" type="date" />
                 <span asp-validation-for="To" class="validation"></span>
             </div>
