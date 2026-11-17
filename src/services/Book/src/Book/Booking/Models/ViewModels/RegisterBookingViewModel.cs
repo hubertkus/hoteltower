@@ -13,7 +13,7 @@ public class RegisterBookingViewModel
         = new List<SelectListItem>();
 
     [Required(ErrorMessage = "Data rozpoczęcia jest wymagana")]
-    public DateOnly From { get; set; } = DateOnly.MinValue;
+    public DateOnly From { get; set; } = DateOnly.FromDateTime(DateTime.Today);
     [Required(ErrorMessage = "Data zakończenia jest wymagana")]
-    public DateOnly To { get; set; } = DateOnly.MinValue;
+    public DateOnly To { get; set; } =  DateOnly.FromDateTime(DateTime.Today.AddDays(1));
 }
