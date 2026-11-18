@@ -5,7 +5,7 @@
 <html lang="pl">
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="~/_content/Shared.UI/css/site.css" />
+    <link rel="stylesheet" href="~/_content/Shared.UI/css/site.css?v=2" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
     <title>Rezerwacja w hotelu Tower</title>
 </head>
@@ -23,12 +23,8 @@
 
             <div class="form-group">
                 <label asp-for="RoomId" style="color: #1976d2;">Nr. pokoju</label>
-                <select asp-for="RoomId">
+                <select asp-for="RoomId" asp-items="Model.Rooms" class="room-select" required>
                     <option value="">Wybierz pokój</option>
-                    @foreach (var room in Model.Rooms)
-                    {
-                        <option value="@room.Value">@room.Text</option>
-                    }
                 </select>
                 <span asp-validation-for="RoomId" class="validation"></span>
             </div>
