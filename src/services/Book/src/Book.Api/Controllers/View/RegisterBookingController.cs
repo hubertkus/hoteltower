@@ -27,7 +27,7 @@ public class RegisterBookingController : Controller
             Rooms = rooms.Select(r => new SelectListItem
             {
                 Value = r.Id.ToString(),
-                Text = r.ShortName
+                Text = r.Name
             })
         });
     }
