@@ -70,15 +70,3 @@
             color: #d32f2f;
             font-size: 14px;
         }
-
-        .form-group input[type="date"] {
-            border: 1px solid #c7d7e8;
-            border-radius: 8px;
-            background-color: #fff;
-            color: #2e9d50;
-        }
-
-        .form-group select,
-        .form-group select option {
-            color: #2e9d50;
-        }

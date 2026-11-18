@@ -6,6 +6,7 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="~/_content/Shared.UI/css/site.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
     <title>Rezerwacja w hotelu Tower</title>
 </head>
 
@@ -34,18 +35,33 @@
 
             <div class="form-group">
                 <label asp-for="From" style="color: #1976d2;">Data rozpoczęcia</label>
-                <input asp-for="From" type="date" />
+                <input asp-for="From" type="text" class="form-control datepicker" />
                 <span asp-validation-for="From" class="validation"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="To" style="color: #1976d2;">Data zakończenia</label>
-                <input asp-for="To" type="date" />
+                <input asp-for="To" type="text" class="form-control datepicker" />
                 <span asp-validation-for="To" class="validation"></span>
             </div>
 
             <button type="submit" class="button">Zarezerwuj</button>
+
         </form>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pl.js"></script>
+
+    <script>
+        flatpickr(".datepicker", {
+        locale: "pl",
+        dateFormat: "Y-m-d",
+        altInput: true,
+        altFormat: "d.m.Y",
+        minDate: "today",
+        disableMobile: true
+        });
+    </script>
 </body>
 </html>
