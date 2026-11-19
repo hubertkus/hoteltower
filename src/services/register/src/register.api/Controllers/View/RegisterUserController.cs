@@ -29,8 +29,13 @@ public class RegisterUserController : Controller
         if (!response.IsSuccessStatusCode)
             return View(model);
 
+        var result = await response.Content.ReadFromJsonAsync<RegisterUserResponse>();
+
+        if (result == null)
+            return View(model);
+
         ViewData["Message"] = "Zarejestrowano pomyślnie";
 
-        return View("Registered",new RegisterUserResponse { Id = await response.Content.ReadFromJsonAsync<Guid>() });
+        return View("Registered", result);
     }
 }
