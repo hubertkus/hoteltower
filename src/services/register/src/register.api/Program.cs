@@ -21,7 +21,7 @@ builder.Services.AddMediatR(cfg =>
 cfg.RegisterServicesFromAssembly(typeof(ApplicationAssemblyMarker).Assembly));
 builder.Services.AddTransient<IUserRepository, EFUserRepository>();
 builder.Services.AddHttpClient("Register", c =>
-c.BaseAddress = new Uri("https://localhost:7110"));
+c.BaseAddress = new Uri("https://localhost:7110/"));
 
 var app = builder.Build();
 
@@ -33,7 +33,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UsePathBase("/register");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

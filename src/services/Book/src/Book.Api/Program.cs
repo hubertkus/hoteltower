@@ -23,7 +23,7 @@ builder.Services.AddTransient<IRoomRepository,RoomRepository>();
 builder.Services.AddScoped<IBookingRepository,EFBookingRepository>();
 builder.Services.AddScoped<IRoomsSeeder,RoomsSeeder>();
 builder.Services.AddHttpClient("Booking", c =>
-c.BaseAddress = new Uri("https://localhost:7125"));
+c.BaseAddress = new Uri("https://localhost:7125/"));
 
 var app = builder.Build();
 
@@ -35,7 +35,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UsePathBase("/book");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
